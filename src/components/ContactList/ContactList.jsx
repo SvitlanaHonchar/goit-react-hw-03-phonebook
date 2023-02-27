@@ -8,15 +8,22 @@ class ContactList extends Component {
     const { contacts, onRemoveContact } = this.props;
     return (
       <div>
-        <StyledOl>
-          {contacts.map(contact => {
-            return (
-              <StyledLi key={contact.name}>
-                <Contact contact={contact} onRemoveContact={onRemoveContact} />
-              </StyledLi>
-            );
-          })}
-        </StyledOl>
+        {contacts.length === 0 ? (
+          <i>-- no contacts here --</i>
+        ) : (
+          <StyledOl>
+            {contacts.map(contact => {
+              return (
+                <StyledLi key={contact.name}>
+                  <Contact
+                    contact={contact}
+                    onRemoveContact={onRemoveContact}
+                  />
+                </StyledLi>
+              );
+            })}
+          </StyledOl>
+        )}
       </div>
     );
   }
