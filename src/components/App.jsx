@@ -6,8 +6,12 @@ import Filter from './Filter/Filter';
 
 class App extends Component {
   state = {
-    contacts: gettingItem('contacts') ?? [],
+    contacts: [],
     filter: '',
+  };
+
+  componentDidMount = () => {
+    this.setState({ contacts: gettingItem('contacts') ?? [] });
   };
 
   componentDidUpdate = (prevProps, prevState) => {
