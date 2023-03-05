@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid';
 import ContactList from './ContactList/ContactList';
 import Phonebook from './Phonebook/Phonebook';
 import Filter from './Filter/Filter';
+import { settingItem } from '../helpers/localStorageFunc';
+import { gettingItem } from '../helpers/localStorageFunc';
 
 class App extends Component {
   state = {
@@ -86,22 +88,3 @@ class App extends Component {
 }
 
 export default App;
-
-// try/catch
-function settingItem(key, value) {
-  try {
-    const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
-  } catch (error) {
-    console.log('Everyone makes mistakes, this is yours:', error.message);
-  }
-}
-
-function gettingItem(key) {
-  try {
-    const serializedState = localStorage.getItem(key);
-    return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.log('Everyone makes mistakes, this is yours:', error.message);
-  }
-}
