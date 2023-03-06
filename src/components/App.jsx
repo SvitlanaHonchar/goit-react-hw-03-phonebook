@@ -78,10 +78,14 @@ class App extends Component {
         />
         <Filter onFilterContacts={this.onFilterContacts} />
         <h2>Contacts</h2>
-        <ContactList
-          contacts={filteredContacts}
-          onRemoveContact={this.onRemoveContact}
-        />
+        {this.state.contacts.length === 0 ? (
+          <i>-- no contacts here --</i>
+        ) : (
+          <ContactList
+            contacts={filteredContacts}
+            onRemoveContact={this.onRemoveContact}
+          />
+        )}
       </div>
     );
   }
